@@ -1,0 +1,34 @@
+.mermaid {
+  text-align: center;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+.legend-container {
+  display: flex;
+  flex-direction: row;
+  margin: 40px auto;
+  padding: 10px;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin: 0 10px;
+}
+
+.legend-box {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 3px;
+  border: 1px solid #aaa;
+}

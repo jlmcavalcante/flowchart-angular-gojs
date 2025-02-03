@@ -1,13 +1,13 @@
 import * as go from 'gojs';
 
 export class SerpentineLayout extends go.Layout {
-  private _spacing: go.Size = new go.Size(50, 50);
-  private _wrapCount: number = 3; // 🔥 Mantém 4 nós por linha
+  private _spacing: go.Size = new go.Size(120, 80);
+  private _wrapCount: number = 3;
   private _root: go.Node | null = null;
 
   constructor(init?: Partial<SerpentineLayout>) {
     super();
-    this.isViewportSized = true; // O layout se ajusta ao tamanho da tela
+    this.isViewportSized = true;
     if (init) Object.assign(this, init);
   }
 
@@ -87,14 +87,13 @@ export class SerpentineLayout extends go.Layout {
         rowHeight = Math.max(rowHeight, bounds.height);
         count++;
 
-        if (count >= this._wrapCount) { // 🔥 Quebra a linha após 4 nós
-          // 🔥 Alinha os nós ao centro da linha antes de mudar para a próxima
+        if (count >= this._wrapCount) {
           const rowCenterY = y + rowHeight / 2;
           for (const n of rowNodes) {
             const nb = this.getLayoutBounds(n);
             n.move(new go.Point(n.location.x, rowCenterY - nb.height / 2));
           }
-          rowNodes = []; // Reseta a linha
+          rowNodes = [];
 
           y += rowHeight + spacing.height;
           count = 0;
@@ -102,7 +101,11 @@ export class SerpentineLayout extends go.Layout {
           x -= spacing.width;
           if (nextlink) {
             nextlink.fromSpot = go.Spot.Right;
-            nextlink.toSpot = go.Spot.Right; // 🔥 Mantém a conexão correta
+            nextlink.toSpot = go.Spot.Right;
+
+            const linkBounds = nextlink.actualBounds;
+            nextlink.fromEndSegmentLength = 80;
+            nextlink.toEndSegmentLength = 80;
           }
         } else {
           x += spacing.width;
@@ -117,14 +120,13 @@ export class SerpentineLayout extends go.Layout {
         rowHeight = Math.max(rowHeight, bounds.height);
         count++;
 
-        if (count >= this._wrapCount) { // 🔥 Quebra a linha após 4 nós
-          // 🔥 Alinha os nós ao centro da linha antes de mudar para a próxima
+        if (count >= this._wrapCount) {
           const rowCenterY = y + rowHeight / 2;
           for (const n of rowNodes) {
             const nb = this.getLayoutBounds(n);
-            n.move(new go.Point(n.location.x, rowCenterY - nb.height / 2));
+            n.move(new go.Point(n.location.x + 120, rowCenterY - nb.height / 2));
           }
-          rowNodes = []; // Reseta a linha
+          rowNodes = [];
 
           y += rowHeight + spacing.height;
           count = 0;
@@ -132,7 +134,11 @@ export class SerpentineLayout extends go.Layout {
           x += spacing.width;
           if (nextlink) {
             nextlink.fromSpot = go.Spot.Left;
-            nextlink.toSpot = go.Spot.Left; // 🔥 Mantém a conexão correta
+            nextlink.toSpot = go.Spot.Left;
+
+            const linkBounds = nextlink.actualBounds;
+            nextlink.fromEndSegmentLength = 80;
+            nextlink.toEndSegmentLength = 80;
           }
         } else {
           x -= spacing.width;
@@ -146,7 +152,6 @@ export class SerpentineLayout extends go.Layout {
       node = nextnode;
     }
 
-    // 🔥 Alinha a última linha antes de finalizar
     if (rowNodes.length > 0) {
       const rowCenterY = y + rowHeight / 2;
       for (const n of rowNodes) {

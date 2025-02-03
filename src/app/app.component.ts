@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MermaidDiagramComponent } from './mermaid-diagram/components/mermaid-diagram.component';
+import { GojsFlowchartComponent } from './mermaid-diagram/components/gojs-flowchart.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MermaidDiagramComponent],
+  imports: [RouterOutlet, GojsFlowchartComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
