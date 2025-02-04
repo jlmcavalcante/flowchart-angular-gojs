@@ -20,6 +20,7 @@
     "@angular/router": "^17.3.0",
     "flowchart": "file:",
     "gojs": "^3.0.18",
+    "html2canvas": "^1.4.1",
     "mermaid": "^11.4.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

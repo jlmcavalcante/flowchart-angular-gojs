@@ -1,17 +1,24 @@
-<div class="legend-container">
-  <h3>Legenda das Cores:</h3>
-  <div class="legend-item">
-    <span class="legend-box" style="background-color: #FF5733;"></span> Decisão
+<button (click)="downloadAsPng()">Baixar como imagem</button>
+<div #captureDiv>
+  <div class="legend-container">
+    <h3 style="margin-right: 12px;">Legenda:</h3>
+    <div class="legend-item">
+      <span class="legend-box" style="background-color: #3498DB;"></span> Ato do Polo Ativo
+    </div>
+    <div class="legend-item">
+      <span class="legend-box" style="background-color: #2ECC71;"></span> Ato do Polo Passivo
+    </div>
+    <div class="legend-item">
+      <span class="legend-box" style="background-color: #F1C40F;"></span> Ato do Tribunal
+    </div>
+    <div class="legend-item">
+      <span class="legend-box" style="background-color: #FF5733;"></span> Decisão
+    </div>
   </div>
-  <div class="legend-item">
-    <span class="legend-box" style="background-color: #3498DB;"></span> Ato do Polo Ativo
-  </div>
-  <div class="legend-item">
-    <span class="legend-box" style="background-color: #2ECC71;"></span> Ato do Polo Passivo
-  </div>
-  <div class="legend-item">
-    <span class="legend-box" style="background-color: #F1C40F;"></span> Ato do Tribunal
-  </div>
-</div>
 
-<div #diagramDiv style="width: 100%; height: 2000px;"></div>
+  <div class="container">
+    <div class="overlay"></div>
+    <div #diagramDiv class="flowchart" style="width: 100%" style.height.px = {{dynamicHeight}}></div>
+  </div>
+  <!-- <div #diagramDiv style="width: 90%; height: 100vh; border: 1px solid red"></div> -->
+</div>
